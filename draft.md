@@ -12,6 +12,17 @@ __dabt_svc
         do_translation_fault
           do_page_fault
             __do_kernel_fault
+              show_pte and
+              die
+                report_bug
+                __die
+                  __show_regs(regs)
+                  dump_mem
+                  dump_backtrace
+                  dump_instr
+                crash_kexec
+                  machine_crash_shutdown
+
 
 ```
 
