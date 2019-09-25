@@ -10,7 +10,7 @@ __dabt_svc
     CPU_DABORT_HANDLER
       do_DataAbort
         do_translation_fault
-          do_page_fault
+          do_page_fault =================> addr < TASK_SIZE( addr == NULL or in kmalloc....)
             __do_kernel_fault
               show_pte and
               die
@@ -22,7 +22,9 @@ __dabt_svc
                   dump_instr
                 crash_kexec
                   machine_crash_shutdown
-
+          do_bad_area ====================> addr >= TASK_SIZE
+            __do_user_fault
+            __do_kernel_fault ============> addr in vmalloc
 
 ```
 
