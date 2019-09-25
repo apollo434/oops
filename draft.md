@@ -10,8 +10,8 @@ __dabt_svc
     CPU_DABORT_HANDLER
       do_DataAbort
         do_translation_fault
-          do_page_fault =================> addr < TASK_SIZE( addr == NULL or in kmalloc....)
-            __do_kernel_fault
+          do_page_fault =================> addr < TASK_SIZE
+            __do_kernel_fault ===========> addr == NULL or in kmalloc
               show_pte and
               die
                 report_bug
